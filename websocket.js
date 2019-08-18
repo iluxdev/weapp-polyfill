@@ -18,7 +18,7 @@ class WebSocket extends EventTarget(EVENTS) {
     if (!url) {
       throw new TypeError('Failed to construct \'WebSocket\': url required');
     }
-    if (protocal && !(wx.canIUse && wx.canIUse('connectSocket.object.protocols'))) {
+    if (protocal && !(Taro.canIUse && Taro.canIUse('connectSocket.object.protocols'))) {
       throw new Error('subprotocal not supported in weapp');
     }
     super();
@@ -34,7 +34,7 @@ class WebSocket extends EventTarget(EVENTS) {
       });
     }
     
-    const socketTask = wx.connectSocket({
+    const socketTask = Taro.connectSocket({
       url,
       protocals: this._protocal,
       fail: (error) => setTimeout(() => errorHandler(error), 0),

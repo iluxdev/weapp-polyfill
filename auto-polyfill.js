@@ -1,26 +1,26 @@
-var polyfill = require('./index.js').polyfill;
+var polyfill = require("./index.js").polyfill
 try {
-  polyfill();
+  polyfill()
 } catch (e) {}
 try {
-  polyfill(GameGlobal);
-} catch (e) {}
-try{
-  window = window || {};
-  polyfill(window);
+  polyfill(GameGlobal)
 } catch (e) {}
 try {
-  localStorage = localStorage || require('./localstorage.js');
+  window = window || {}
+  polyfill(window)
 } catch (e) {}
 try {
-  XMLHttpRequest = XMLHttpRequest || require('./xmlhttprequest.js');
+  localStorage = require("./localstorage.js")
 } catch (e) {}
 try {
-  FormData = FormData || require('./formdata.js');
+  XMLHttpRequest = require("./xmlhttprequest.js")
 } catch (e) {}
 try {
-  WebSocket = WebSocket || require('./websocket.js');
+  FormData = require("./formdata.js")
 } catch (e) {}
 try {
-  navigator = navigator || require('./navigator.js');
+  WebSocket = require("./websocket.js")
+} catch (e) {}
+try {
+  navigator = require("./navigator.js")
 } catch (e) {}

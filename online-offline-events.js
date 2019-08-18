@@ -1,7 +1,7 @@
 const EventTarget = require('event-target-shim');
 
 exports.polyfill = target => {
-  if (!wx.onNetworkStatusChange) return;
+  if (!Taro.onNetworkStatusChange) return;
   if (target.__onlineOfflinePolyfilled) return;
   target.__onlineOfflinePolyfilled = true;
   const internalEventTarget = new EventTarget();
@@ -15,10 +15,10 @@ exports.polyfill = target => {
       target.importScripts = () => { throw new Error('mocked'); };
     }
   }
-  wx.getNetworkType({
+  Taro.getNetworkType({
     success: ({networkType}) => {
       target.onLine = networkType !== 'none';
-      wx.onNetworkStatusChange(({isConnected}) => {
+      Taro.onNetworkStatusChange(({isConnected}) => {
         if (target.onLine === isConnected) return;
         target.onLine = isConnected;
         target.dispatchEvent({

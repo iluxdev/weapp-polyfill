@@ -116,7 +116,7 @@ class XMLHttpRequest extends EventTarget(REQUEST_EVENTS) {
       const restData = entries
         .filter(entry => typeof entry[1] === 'string')
         .reduce((result, entry) => assign(result, { [entry[0]]: entry[1] }), {});
-      this._request = wx.uploadFile({
+      this._request = Taro.uploadFile({
         url: this._url,
         name: blobs[0][0],
         filePath: blobs[0][1].uri,
@@ -144,7 +144,7 @@ class XMLHttpRequest extends EventTarget(REQUEST_EVENTS) {
         });
       }
     } else {
-      this._request = wx.request({
+      this._request = Taro.request({
         url: this._url,
         data: data || '',
         // method 的 value 居然必须为大写
