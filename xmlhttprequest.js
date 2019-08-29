@@ -122,7 +122,7 @@ class XMLHttpRequest extends EventTarget(REQUEST_EVENTS) {
           var totalBytesSent = _ref.totalBytesSent,
             totalBytesExpectedToSend = _ref.totalBytesExpectedToSend
 
-          _this4.upload.dispatchEvent({
+          this.upload.dispatchEvent({
             type: "progress",
             loaded: totalBytesSent,
             total: totalBytesExpectedToSend
