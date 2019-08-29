@@ -118,11 +118,12 @@ class XMLHttpRequest extends EventTarget(REQUEST_EVENTS) {
       // 基础库 1.4.0 开始支持
       // iLux Mod for swan upload progress - START
       if (this._request && this._request.progress) {
+        let that = this
         this._request.progress(function(_ref) {
           var totalBytesSent = _ref.totalBytesSent,
             totalBytesExpectedToSend = _ref.totalBytesExpectedToSend
 
-          this.upload.dispatchEvent({
+          that.upload.dispatchEvent({
             type: "progress",
             loaded: totalBytesSent,
             total: totalBytesExpectedToSend
